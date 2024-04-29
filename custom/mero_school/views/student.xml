@@ -1,0 +1,92 @@
+<odoo>
+
+   
+     
+    <record id="view_school_student_form" model="ir.ui.view">
+            <field name="name">school.student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+                          <div class="oe_title">
+                              <h1>
+                                 <field name="ref" readonly="1"/>
+                              </h1>
+                          </div>
+                        <group>
+                                
+                                <field name="name"/>
+                                <field name="age"/>
+                                <field name="is_child"/>
+                                <field name="gender"/>
+                                <field name="teacher_id"/>
+                                <field name="address"/>
+                                <field name="phone"/>
+                                <field name="capitalized_name"/>
+                                 <field name="tag_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                         <field name="message_follower_ids"/>
+                         <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+
+                    </div>
+
+                </form>
+            </field>
+        </record>
+
+       <record id="view_school_student_tree" model="ir.ui.view">
+            <field name="name">school.student.tree</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="ref"/>
+                    <field name="name"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="address"/>
+                    <field name="phone"/>
+                    <field name="capitalized_name"/>
+                    
+                </tree>
+            </field>
+        </record>
+
+         <record id="view_school_student_search" model="ir.ui.view">
+            <field name="name">school.student.search</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <search>
+                   
+                    <field name="name" filter_domain="['|', ('name','ilike',self),('ref','ilike',self)]"/>
+                    <field name="age"/>
+                    <field name="gender"/>
+                    <field name="address"/>
+                    <field name="phone"/>
+                    <filter name="filter_male" string="Male" domain="[('gender','=','male')]"/>
+                    <filter name="filter_female" string="Female" domain="[('gender','=','female')]"/>
+                    <filter name="filter_other" string="Other" domain="[('gender','=','other')]"/>
+                    <separator/>
+                    <filter name="filter_childs" string="Childs" domain="[('is_child','=','True')]"/>
+                    <group expand="0" string="Group By">
+                         <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                    </group>
+                   
+                    
+                </search>
+            </field>
+        </record>
+
+        <!-- Action for Student List View -->
+    <record id="action_school_student" model="ir.actions.act_window">
+         <field name="name">Students</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">school.student</field>
+         <field name="view_mode">tree,form</field>
+         <field name="search_view_id" ref="mero_school.view_school_student_search"/>
+    </record>
+
+        <menuitem id="menu_student" name="Students" parent="menu_class" action="action_school_student" sequence="10"/>
+
+</odoo>

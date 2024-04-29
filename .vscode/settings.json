@@ -1,0 +1,8 @@
+{
+    "python.autoComplete.extraPaths": [
+        "${workspaceFolder}/odoo", "${workspaceFolder}/odoo/odoo"
+    ],
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/odoo", "${workspaceFolder}/odoo/odoo"
+    ],
+}

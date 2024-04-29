@@ -1,0 +1,66 @@
+
+<odoo>
+       <record id="view_school_teacher_form" model="ir.ui.view">
+            <field name="name">school.teacher.form</field>
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                <form>
+                   <sheet>
+                      <widget name ="web_ribbon" title="Archived" bg_color="bg-danger" attrs="{'invisible': [('active','=',True)]}"/>
+                        <group>
+                                
+                                <field name="name"/>
+                                
+                                <field name="gender"/>
+                                 <field name="ref"/>
+                                <field name="active" invisible="1"/>
+
+                        </group>
+                   
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    <!--tree view of the doctor model-->
+    <record id="view_chool_teacher_tree" model="ir.ui.view">
+        <field name="name">school.teacher.tree</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <tree string="Teacher">
+                <field name="name"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+     </record>
+     
+    <record id="view_school_teacher_search" model="ir.ui.view">
+            <field name="name">school.teacher.search</field>
+            <field name="model">school.teacher</field>
+            <field name="arch" type="xml">
+                <search>
+                   
+                    <field name="name"/>
+                    <field name="ref"/>
+                    <field name="gender"/>
+                    <separator/>
+                    <filter name="archived" string="Archived" domain="[('active','=', False)]"/>
+                    
+                    
+                </search>
+            </field>
+        </record>
+
+    
+     <record id="action_school_teacher" model="ir.actions.act_window">
+         <field name="name">Teachers</field>
+         <field name="type">ir.actions.act_window</field>
+         <field name="res_model">school.teacher</field>
+         <field name="view_mode">tree,form</field>
+        
+    </record>
+
+    
+    <!--menu for the doctor-->
+    <menuitem id="school_teacher" name="Teachers" parent="menu_teacher" action="action_school_teacher" sequence="20"/>
+
+</odoo>

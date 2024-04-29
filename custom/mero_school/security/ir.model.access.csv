@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+mero_school.access_student_model,acess_school.student,mero_school.model_school_student,base.group_user,1,1,1,1
+
+mero_school.access_teacher_model,acess_school.teacher,mero_school.model_school_teacher,base.group_user,1,1,1,1

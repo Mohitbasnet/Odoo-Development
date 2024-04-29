@@ -1,0 +1,15 @@
+
+
+<odoo>
+    
+    
+        <menuitem id="menu_school_root" name="School" sequence="10"/>
+        
+        <menuitem id="menu_class" name="Classes" parent="menu_school_root" sequence="10"/>
+        
+        <menuitem id="menu_teacher" name="Teachers" parent="menu_school_root" sequence="10"/>
+        
+
+        
+    
+</odoo>
