@@ -1,0 +1,70 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+
+   <record model="ir.ui.view" id="pos_config_form_view">
+    <field name="name">pos.config.form.view</field>
+    <field name="model">pos.config</field>
+    <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+    <field name="arch" type="xml">
+        
+        <xpath expr="//div[@id='title']" position="after">
+            <div class="row mt16 o_settings_container">
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="visible_backspace_btn"/>
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <label for="visible_backspace_btn"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </field>
+</record>
+
+
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="mb_pos_restrict.action_window">
+      <field name="name">mb_pos_restrict window</field>
+      <field name="res_model">mb_pos_restrict.mb_pos_restrict</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="mb_pos_restrict.action_server">
+      <field name="name">mb_pos_restrict server</field>
+      <field name="model_id" ref="model_mb_pos_restrict_mb_pos_restrict"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="mb_pos_restrict" id="mb_pos_restrict.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="mb_pos_restrict.menu_1" parent="mb_pos_restrict.menu_root"/>
+    <menuitem name="Menu 2" id="mb_pos_restrict.menu_2" parent="mb_pos_restrict.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="mb_pos_restrict.menu_1_list" parent="mb_pos_restrict.menu_1"
+              action="mb_pos_restrict.action_window"/>
+    <menuitem name="Server to list" id="mb_pos_restrict" parent="mb_pos_restrict.menu_2"
+              action="mb_pos_restrict.action_server"/>
+-->
+  </data>
+</odoo>
