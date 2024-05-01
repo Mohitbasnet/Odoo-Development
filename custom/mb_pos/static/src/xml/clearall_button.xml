@@ -1,0 +1,15 @@
+<templates>
+
+    <t t-name="MohitClearButton" owl="1">
+
+      <div class="control-button">
+         <i class="fa fa-remove" role="img" aria-label="Mohit Clear Button" title="Mohit Clear Button" />
+        Clear All
+
+
+        </div>
+    </t>
+
+
+
+</templates>

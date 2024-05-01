@@ -30,7 +30,9 @@
     'assets':{
         'point_of_sale.assets':[
             "mb_pos/static/src/js/mb_sample_button.js",
-            "mb_pos/static/src/xml/mb_button.xml"
+            "mb_pos/static/src/js/clearall_button.js",
+            "mb_pos/static/src/xml/mb_button.xml",
+            "mb_pos/static/src/xml/clearall_button.xml"
         ]
     }
   
