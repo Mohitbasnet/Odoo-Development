@@ -18,9 +18,29 @@ odoo.define("mb_pos.MohitSampleButton", function(require) {
 
         async mb_sample_button_click(){
 
+            // Rendering Dynamic Data
+            var multi_lang = await this.rpc({
+                route:"/pos/rpc/example",
+                params:{},
+            });
+
+            console.log("language--->",multi_lang);
+
+            var multi_lang_list = [];
+
+            multi_lang.forEach(function(value){
+                multi_lang_list.push({"id":value.id,
+                "label":value.name,
+                 "item":value});
+            });
             
+            console.log(multi_lang_list);
 
-
+            var {confirmed, payload: selectedOption} = await this.showPopup("SelectionPopup", {
+                 title:"Active Languages!",
+                 list: multi_lang_list
+            });
+            console.log(confirmed, selectedOption);
             // var result = await this.rpc({
             //     'model':"res.lang",
             //     "method":"search_read",
@@ -29,18 +49,18 @@ odoo.define("mb_pos.MohitSampleButton", function(require) {
            
 
             // RPC CALL
-            var result = await this.rpc({
-                route: "/pos/rpc/example",
-                params: {}
-            })
+            // var result = await this.rpc({
+            //     route: "/pos/rpc/example",
+            //     params: {}
+            // })
             
            
 
-            result.forEach(function(value){
-                console.log("Record--->",value);
-            })
+            // result.forEach(function(value){
+            //     console.log("Record--->",value);
+            // })
 
-            console.log(result);
+            // console.log(result);
 
             //  Sound pop up
             // this.showPopup("ErrorPopup", {
