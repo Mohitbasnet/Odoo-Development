@@ -50,7 +50,15 @@
                    
                    <field name="isbn"/>
                    <field name="name"/>
-                   
+                   <filter name="filter_inactive"
+                   string="Inactive"
+                   domain="[('active','=',False)]"/>
+
+                   <filter name="filter_active"
+                      string= "Active"
+                      domain="[('active','=',True)]"/>
+
+                      
                     
                 </search>
             </field>
