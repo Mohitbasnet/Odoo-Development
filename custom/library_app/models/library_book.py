@@ -3,7 +3,7 @@
 from odoo import models, fields, api
 
 from odoo.exceptions import ValidationError
-class library_app(models.Model):
+class Book(models.Model):
     _name = 'library.book'
     _description = 'Books'
    

@@ -5,6 +5,9 @@
       <field name="model">library.book</field>
       <field name="arch" type="xml">
       <form string="Books">
+      <header>
+      <button name="button_check_isbn" type="object" string="Check ISBN"/>
+      </header>
       <sheet>
       <group>
             <group>
@@ -58,7 +61,7 @@
                       string= "Active"
                       domain="[('active','=',True)]"/>
 
-                      
+
                     
                 </search>
             </field>
