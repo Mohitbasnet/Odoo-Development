@@ -41,6 +41,22 @@
             </field>
         </record>
 
+
+        <record id="view_search_book" model="ir.ui.view">
+            <field name="name">Search view</field>
+            <field name="model">library.book</field>
+            <field name="arch" type="xml">
+                <search>
+                   
+                   <field name="isbn"/>
+                   <field name="name"/>
+                   
+                    
+                </search>
+            </field>
+        </record>
+
+
     
 
 
