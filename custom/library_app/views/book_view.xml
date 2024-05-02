@@ -1,0 +1,28 @@
+<odoo>
+
+    <record model="ir.ui.view" id="view_form_book">
+      <field name="name">Book Form</field>
+      <field name="model">library.book</field>
+      <field name="arch" type="xml">
+      <form string="Books">
+      <sheet>
+      <group>
+            <group>
+                    <field name= "name"/>
+                    <field name="author_ids" widget="many2many_tags"/>
+                    <field name="publisher_id"/>
+                    <field name="date_published" />
+            </group>
+            <group>        
+                    <field name="isbn" />
+                    <field name= "active" />
+                    <field name="image" widget="image"/>
+            </group>
+        </group>
+        </sheet>
+        </form>
+      </field>
+    </record>
+
+
+</odoo>
