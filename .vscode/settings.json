@@ -1,8 +1,11 @@
 {
     "python.autoComplete.extraPaths": [
-        "${workspaceFolder}/odoo", "${workspaceFolder}/odoo/odoo"
+        "/home/mohit/odoo_files/odoo", 
+        "/home/mohit/odoo_files/odoo/odoo"
     ],
     "python.analysis.extraPaths": [
-        "${workspaceFolder}/odoo", "${workspaceFolder}/odoo/odoo"
-    ],
+        "/home/mohit/odoo_files/odoo",
+        "/home/mohit/odoo_files/odoo/odoo"
+    ]
+   
 }

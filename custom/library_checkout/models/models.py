@@ -1,18 +1,25 @@
 # -*- coding: utf-8 -*-
 
-# from odoo import models, fields, api
+from odoo import models, fields, api
+
+class Checkout(models.Model):
+        _name = "library.checkout"
+        
+        _description = "Checkout Request"
+
+        member_id = fields.Many2one("library.member",required=True,)
+        user_id = fields.Many2one("res.users", "Librarian", default=lambda s: s.env.user,)
+        request_date = fields.Date(default=lambda s: fields.Date.today(),)
+        line_ids = fields.One2many("library.checkout.line",
+                                    "checkout_id",
+                                    string="Borrowed Books",)
 
 
-# class library_checkout(models.Model):
-#     _name = 'library_checkout.library_checkout'
-#     _description = 'library_checkout.library_checkout'
+class CheckoutLine(models.Model):
+        _name = "library.checkout.line"
+        _description = "Checkout Request Line"
 
-#     name = fields.Char()
-#     value = fields.Integer()
-#     value2 = fields.Float(compute="_value_pc", store=True)
-#     description = fields.Text()
-#
-#     @api.depends('value')
-#     def _value_pc(self):
-#         for record in self:
-#             record.value2 = float(record.value) / 100
+        checkout_id = fields.Many2one("library.checkout",required=True,)
+        book_id = fields.Many2one("library.book",required=True)
+        note = fields.Char("Notes")
+        

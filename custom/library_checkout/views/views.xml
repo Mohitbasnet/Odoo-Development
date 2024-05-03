@@ -1,60 +1,57 @@
+
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-<!--
-    <record model="ir.ui.view" id="library_checkout.list">
-      <field name="name">library_checkout list</field>
-      <field name="model">library_checkout.library_checkout</field>
+
+      <record id="action_library_checkout" model="ir.actions.act_window">
+        <field name="name">Checkouts</field>
+        <field name="res_model">library.checkout</field>
+        <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_library_checkout"
+        name="Checkout"
+        action="action_library_checkout"
+        parent="library_app.menu_library"
+        />
+
+      <record id="view_tree_checkout" model="ir.ui.view">
+      <field name="name">Checkout Tree</field>
+      <field name="model">library.checkout</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
+      <tree>
+      <field name="request_date" />
+      <field name="member_id" />
+      </tree>
       </field>
-    </record>
--->
+      </record>
 
-    <!-- actions opening views on models -->
-<!--
-    <record model="ir.actions.act_window" id="library_checkout.action_window">
-      <field name="name">library_checkout window</field>
-      <field name="res_model">library_checkout.library_checkout</field>
-      <field name="view_mode">tree,form</field>
-    </record>
--->
+      <record id="view_form_checkout" model="ir.ui.view">
+      <field name="name">Checkout Form</field>
+      <field name="model">library.checkout</field>
+      <field name="arch" type="xml">
+      <form>
+      <sheet>
 
-    <!-- server action to the one above -->
-<!--
-    <record model="ir.actions.server" id="library_checkout.action_server">
-      <field name="name">library_checkout server</field>
-      <field name="model_id" ref="model_library_checkout_library_checkout"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": model._name,
-        }
+   
+
+      <group>
+      <field name="member_id" />
+      <field name="request_date" />
+      <field name="user_id" />
+      </group>
+         <notebook>
+                <page name="lines">
+                <field name="line_ids">
+                <tree editable="bottom">
+                <field name="book_id" />
+                <field name="note" />
+                </tree>
+                </field>
+                </page>
+</notebook>
+      </sheet>
+ 
+
+      </form>
       </field>
-    </record>
--->
-
-    <!-- Top menu item -->
-<!--
-    <menuitem name="library_checkout" id="library_checkout.menu_root"/>
--->
-    <!-- menu categories -->
-<!--
-    <menuitem name="Menu 1" id="library_checkout.menu_1" parent="library_checkout.menu_root"/>
-    <menuitem name="Menu 2" id="library_checkout.menu_2" parent="library_checkout.menu_root"/>
--->
-    <!-- actions -->
-<!--
-    <menuitem name="List" id="library_checkout.menu_1_list" parent="library_checkout.menu_1"
-              action="library_checkout.action_window"/>
-    <menuitem name="Server to list" id="library_checkout" parent="library_checkout.menu_2"
-              action="library_checkout.action_server"/>
--->
-  </data>
+      </record>
 </odoo>
