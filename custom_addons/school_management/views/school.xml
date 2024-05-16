@@ -1,0 +1,39 @@
+<odoo>
+
+    <data>
+
+        <record id="school_class_form_view" model="ir.ui.view">
+            <field name="name">school.student.form</field>
+            <field name="model">school.student</field>
+            <field name="arch" type="xml">
+                <form string ="Student">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="class_id"/>
+                                <field name="division"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_student">
+            <field name="name">Student</field>
+            <field name="res_model">school.student</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocoutent_smiling_face">
+                    Create School details
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="school_menu" name="School"/>
+        <menuitem id="school_exams_menu" parent="school_menu" name="School" action="action_student" sequence="6"/>
+
+    </data>
+
+</odoo>
