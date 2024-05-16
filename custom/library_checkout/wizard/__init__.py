@@ -1,1 +1,1 @@
-from . import checkout_mess_message
+from . import checkout_message

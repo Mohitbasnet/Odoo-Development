@@ -1,10 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 
+access_library_checkout,Access Library Checkout,library_checkout.model_library_checkout,base.group_user,1,1,1,1
 
+access_library_checkout_line,Access Library Checkout Line,library_checkout.model_library_checkout_line,base.group_user,1,1,1,1
 
+access_library_checkout_massmessage,Access Library Checkout Mass Message,library_checkout.model_library_checkout_massmessage,base.group_user,1,1,1,1
 
-access_library_checkout,library_checkout.library_checkout,model_library_checkout,base.group_user,1,1,1,1
-
-access_library_checkout,library_checkout.library_checkout,model_library_checkout_line,base.group_user,1,1,1,1
-
-access_library_checkout,library_checkout.library_checkout,model_library_checkout_massmessage,base.group_user,1,1,1,1

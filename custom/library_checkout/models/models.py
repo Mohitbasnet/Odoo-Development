@@ -18,6 +18,7 @@ class Checkout(models.Model):
 class CheckoutLine(models.Model):
         _name = "library.checkout.line"
         _description = "Checkout Request Line"
+        _inherit = ["mail.thread", "mail.activity.mixin"]
 
         checkout_id = fields.Many2one("library.checkout",required=True,)
         book_id = fields.Many2one("library.book",required=True)
