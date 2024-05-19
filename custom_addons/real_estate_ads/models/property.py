@@ -3,7 +3,7 @@ from odoo import fields,models
 class Property(models.Model):
     _name = 'estate.property'
     _description = "This is the model made by mohit"
-    
+
     name = fields.Char(string="Name")
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
@@ -20,5 +20,6 @@ class Property(models.Model):
     garden_orientaion = fields.Selection([
         ('north','North'),('west',"West"),('east','East'),('south','South')
         ],string="Garden Orientation",default='north')
+     
      
 
