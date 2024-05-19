@@ -21,5 +21,7 @@ class Property(models.Model):
         ('north','North'),('west',"West"),('east','East'),('south','South')
         ],string="Garden Orientation",default='north')
      
+
+
      
 
