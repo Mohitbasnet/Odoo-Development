@@ -8,7 +8,7 @@
     "category":"Sales",
     "application": True,
     "installable": True,
-    "depend": [],
+    "depend": ['base'],
     "data": [
         "security/ir.model.access.csv",
         "views/property_view.xml",
