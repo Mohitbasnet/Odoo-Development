@@ -34,6 +34,16 @@
                                 <field name="best_offer"/>
                                 <field name="selling_price"/>
                             </group>
+                            <field name="offer_ids">
+                            <tree>
+
+                              <field name="price"/>
+                              <field name="status"/>
+                              <field name="partner_id"/>
+
+                            </tree>
+
+                            </field>
                         </group>
                     </sheet>
                 </form>
