@@ -23,6 +23,9 @@ class Property(models.Model):
     garden_orientaion = fields.Selection([
         ('north','North'),('west',"West"),('east','East'),('south','South')
         ],string="Garden Orientation",default='north')
+
+    sales_id = fields.Many2one('res.users',string="Salesman")
+    buyer_id = fields.Many2one('res.partner', string="Buyer")
      
 
 class PropertyType(models.Model):
