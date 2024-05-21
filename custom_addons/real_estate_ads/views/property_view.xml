@@ -1,5 +1,6 @@
 <odoo>
     <data>
+        <!-- Tree View -->
         <record id="estate_property_tree_view" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
@@ -15,6 +16,7 @@
             </field>
         </record>
 
+        <!-- Form View -->
         <record id="estate_property_form_view" model="ir.ui.view">
             <field name="name">estate.property.form</field>
             <field name="model">estate.property</field>
@@ -34,22 +36,46 @@
                                 <field name="best_offer"/>
                                 <field name="selling_price"/>
                             </group>
-                            <field name="offer_ids">
-                            <tree>
-
-                              <field name="price"/>
-                              <field name="status"/>
-                              <field name="partner_id"/>
-
-                            </tree>
-
-                            </field>
                         </group>
+                        <notebook>
+                            <page string="Description">
+                                 <group>
+                                    <field name='description'/>
+                                    <field name='bedrooms'/>
+                                    <field name='living_area'/>
+                                    <field name='facades'/>
+                                    <field name='garage'/>
+                                    <field name='garden'/>
+                                    <field name='garden_area'/>
+                                    <field name='garden_orientaion'/>
+                                </group>
+                            </page>
+                            <page string="Offers">
+                                <field name="offer_ids">
+                                    <tree editable="bottom">
+                                        <field name="price"/>
+                                        <field name="status" nolable="1"/>
+                                        <field name="partner_id"/>
+                                        <field name="validity"/>
+                                        <field name="deadline"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Other info">
+                              <group>
+                                   <field name="sales_id"/>
+                                   <field name="buyer_id"/>
+                            
+                              </group>
+
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
         </record>
 
+        <!-- Action -->
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
@@ -57,7 +83,7 @@
             <field name="view_id" ref="estate_property_tree_view"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
-                    Create a property to Advertise
+                    Create a property to advertise
                 </p>
             </field>
         </record>
