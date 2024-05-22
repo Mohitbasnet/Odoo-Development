@@ -1,0 +1,32 @@
+<odoo>
+
+<data noupdate="1">
+
+<record model="estate.property.tag" id="property_tag_cozy">
+
+  <field name="name"> Cozy </field>
+
+</record>
+<record model="estate.property.tag" id="property_tag_renovated">
+
+  <field name="name"> Renovated </field>
+
+</record>
+<record model="estate.property.tag" id="property_tag_new">
+
+  <field name="name"> New </field>
+
+</record>
+<record model="estate.property.tag" id="property_tag_abandoned">
+
+  <field name="name"> Abandoned </field>
+
+</record>
+
+  
+
+</data>
+
+
+
+</odoo>
