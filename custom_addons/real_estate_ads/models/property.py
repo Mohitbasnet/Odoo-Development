@@ -28,12 +28,12 @@ class Property(models.Model):
     buyer_id = fields.Many2one('res.partner', string="Buyer")
     
     
-    @api.depends("living_area","garden_area")
-    def _compute_total_area(self):
-        for rec in self:
-            rec.total_area = rec.living_area + rec.garden_area
+    @api.onchange("living_area","garden_area")
+    def _onchange_total_area(self):
+        
+        self.total_area = self.living_area + self.garden_area
 
-    total_area = fields.Integer(string="Total Area", compute="_compute_total_area")
+    total_area = fields.Integer(string="Total Area")
 
 class PropertyType(models.Model):
     _name = 'estate.property.type'
