@@ -15,5 +15,9 @@
         "views/menu_items.xml",
         "views/property_tag.xml",
         "views/property_type.xml",
+    
+    # Data files
+        # "data/property_type.xml",
+        "data/estate.property.type.csv"
     ],
 }
