@@ -1,3 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <odoo>
 
  <menuitem name="Property Ads" id="menu_root_property_ads" web_icon="real_estate_ads,static/description/icon.png">
@@ -9,7 +11,11 @@
         <menuitem id="menu_property_settings" name="Settings">
           <menuitem id="menu_property_type" name="Property Types" action="real_estate_ads.action_property_type"/>
           <menuitem id="menu_property_tag" name="Property Tag" action="real_estate_ads.action_property_tag"/>
+          <menuitem id="menu_property_offers" name="Offers" action="real_estate_ads.action_property_offers"/>
        </menuitem> 
+
+
+     
  </menuitem>
 
 </odoo>
