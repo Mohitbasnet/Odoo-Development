@@ -5,6 +5,9 @@ class Property(models.Model):
     _description = "This is the model made by mohit"
 
     name = fields.Char(string="Name")
+    state = fields.Selection([
+        ('new','New'),('received',"Offer Received"),('acceted','Offer Accepted'),('sold','Sold'),('cancel','Cancelled')
+        ],default='new', string="Status")
     tag_ids = fields.Many2many('estate.property.tag', string="Property Tag")
     type_id = fields.Many2one('estate.property.type',string="Property Type")
     offer_ids = fields.One2many('estate.property.offer', 'property_id',string="Offers")
@@ -29,6 +32,14 @@ class Property(models.Model):
     phone = fields.Char(string="Phone", related = "buyer_id.phone")
     
     
+
+    def action_sold(self):
+        self.state = 'accepted'
+    
+    def action_cancel(self):
+        self.state = 'refused'
+
+
     @api.onchange("living_area","garden_area")
     def _onchange_total_area(self):
         

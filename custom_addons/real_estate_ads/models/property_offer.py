@@ -54,6 +54,10 @@ class PropertyOffer(models.Model):
         for rec in self:
             if rec.deadline <= rec.creation_date:
                 raise ValidationError('Deadline cannot be before creation date')
+
+    # _sql_constraints = [
+    #     ('check_validity', 'check(validity > 0)','Deadline cannot be before creation date')
+    # ]
     
     
       
