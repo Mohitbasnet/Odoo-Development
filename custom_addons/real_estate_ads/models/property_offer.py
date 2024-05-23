@@ -4,9 +4,19 @@ from odoo.exceptions import ValidationError
 
 
 class PropertyOffer(models.Model):
-    _name = 'estate.property.offer'
+    _name = 'estate.property.offer' 
     _description = 'Estate property Offer'
 
+
+    @api.depends('partner_id', 'property_id')
+    def _compute_name(self):
+        for rec in self:
+            if rec.property_id and rec.partner_id:
+                rec.name = f"{rec.partner_id.name} - {rec.property_id.name}"
+            else:
+                rec.name = False
+
+    name  = fields.Char(string="Description", compute='_compute_name')
     price = fields.Float(string="Price")
     status = fields.Selection([
         ('accepted','Accepted'),('refused',"Refused")
@@ -49,12 +59,15 @@ class PropertyOffer(models.Model):
             else:
                 rec.deadline = False
 
-    @api.constrains('validity')
+    @api.constrains('deadline', 'creation_date')
     def _check_validity(self):
         for rec in self:
-            if rec.deadline <= rec.creation_date:
+            if rec.deadline and rec.creation_date and rec.deadline <= rec.creation_date:
                 raise ValidationError('Deadline cannot be before creation date')
 
+    
+
+    
     # _sql_constraints = [
     #     ('check_validity', 'check(validity > 0)','Deadline cannot be before creation date')
     # ]
