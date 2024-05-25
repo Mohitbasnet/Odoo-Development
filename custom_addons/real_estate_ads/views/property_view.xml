@@ -113,6 +113,17 @@
             </field>
         </record>
 
+        <record id="estate_property_graph_view" model="ir.ui.view">
+            <field name="name">estate.property.graph</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="name"/>
+                    <field name="selling_price" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
 
 
         <!-- Form View -->
@@ -196,7 +207,7 @@
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
-            <field name="view_mode">kanban,tree,pivot,form</field>
+            <field name="view_mode">kanban,tree,pivot,graph,form</field>
             <field name="view_id" ref="estate_property_tree_view"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
