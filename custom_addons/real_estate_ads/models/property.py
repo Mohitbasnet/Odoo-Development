@@ -37,7 +37,7 @@ class Property(models.Model):
         self.state = 'accepted'
     
     def action_cancel(self):
-        self.state = 'refused'
+        self.state = 'cancel'
 
     @api.depends('offer_ids')
     def _compute_best_price(self):

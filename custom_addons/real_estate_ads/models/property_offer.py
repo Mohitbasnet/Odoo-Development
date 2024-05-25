@@ -20,7 +20,7 @@ class PropertyOffer(models.Model):
     price = fields.Float(string="Price")
     status = fields.Selection([
         ('accepted','Accepted'),('refused',"Refused")
-        ],string="Staus")
+        ],string="Status")
     
     partner_id = fields.Many2one('res.partner', string="Customer")
     property_id = fields.Many2one('estate.property', string="Property")
@@ -82,7 +82,7 @@ class PropertyOffer(models.Model):
 
         
 
-   
+
         
     def action_decline_offer(self):
         self.status = 'refused'
