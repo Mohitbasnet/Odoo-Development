@@ -99,6 +99,21 @@
         </record>
 
 
+        <record id="estate_property_pivot_view" model="ir.ui.view">
+            <field name="name">estate.property.pivot</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="name" type="row"/>
+                    <field name="selling_price" type="measure"/>
+                    <field name="expected_price" type="measure"/>
+                    <field name="facades" type="measure"/>
+                    <field name="bedrooms" type="measure"/>
+                </pivot>
+            </field>
+        </record>
+
+
 
         <!-- Form View -->
         <record id="estate_property_form_view" model="ir.ui.view">
@@ -181,7 +196,7 @@
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
-            <field name="view_mode">kanban,tree,form</field>
+            <field name="view_mode">kanban,tree,pivot,form</field>
             <field name="view_id" ref="estate_property_tree_view"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
