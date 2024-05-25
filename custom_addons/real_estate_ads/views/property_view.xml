@@ -108,7 +108,7 @@
                     <field name="selling_price" type="measure"/>
                     <field name="expected_price" type="measure"/>
                     <field name="facades" type="measure"/>
-                    <field name="bedrooms" type="measure"/>
+                    <field name="bedrooms" type="col"/>
                 </pivot>
             </field>
         </record>
