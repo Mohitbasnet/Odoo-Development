@@ -6,7 +6,7 @@ class Property(models.Model):
 
     name = fields.Char(string="Name")
     state = fields.Selection([
-        ('new','New'),('received',"Offer Received"),('acceted','Offer Accepted'),('sold','Sold'),('cancel','Cancelled')
+        ('new','New'),('received',"Offer Received"),('accepted','Offer Accepted'),('sold','Sold'),('cancel','Cancelled')
         ],default='new', string="Status")
     tag_ids = fields.Many2many('estate.property.tag', string="Property Tag")
     type_id = fields.Many2one('estate.property.type',string="Property Type")
@@ -15,8 +15,8 @@ class Property(models.Model):
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(string="Available from")
     expected_price = fields.Float(string="Expected Price")
-    selling_price = fields.Float(string="Selling Price")
-    best_offer = fields.Monetary(string="Best Offer", compute='_compute_best_price')
+    selling_price = fields.Float(string="Selling Price", readonly = True)
+    best_offer = fields.Float(string="Best Offer", compute='_compute_best_price')
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area")
     facades = fields.Integer(string="Facades")
@@ -85,7 +85,7 @@ class PropertyTag(models.Model):
     _description="Property Tag"
 
     name = fields.Char(string="Name", required=True)
-    color = fields.Integer(string="Colort")
+    color = fields.Integer(string="Color")
 
 
 
