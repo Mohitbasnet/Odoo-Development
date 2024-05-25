@@ -9,6 +9,25 @@
             <field name="view_mode">tree,form</field>
             <field name="domain"> [('property_id', '=', active_id)] </field>
         
+        
+           
+        </record>
+        <!-- Tree View -->
+        <record id="estate_property_tree_view" model="ir.ui.view">
+            <field name="name">estate.property.tree</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="postcode"/>
+                    <field name="date_availability"/>
+                    <field name="expected_price"/>
+                    <field name="best_offer"/>
+                    <field name="selling_price"/>
+                </tree>
+            </field>
+        </record>
+
          <record id="estate_property_search_view" model="ir.ui.view">
             <field name="name">estate.property.search</field>
             <field name="model">estate.property</field>
@@ -26,24 +45,11 @@
                     <group expand="0" string="Group By">
                         <filter string="Status" name="group_by_state" context="{'group_by': 'state'}"/>
                     </group>
+                    <searchpanel>
+                      <field name="state" icon="fa-filter" group_by="group_by_state" limit="0"/>
+
+                    </searchpanel>
                 </search>
-            </field>
-        </record>
-           
-        </record>
-        <!-- Tree View -->
-        <record id="estate_property_tree_view" model="ir.ui.view">
-            <field name="name">estate.property.tree</field>
-            <field name="model">estate.property</field>
-            <field name="arch" type="xml">
-                <tree>
-                    <field name="name"/>
-                    <field name="postcode"/>
-                    <field name="date_availability"/>
-                    <field name="expected_price"/>
-                    <field name="best_offer"/>
-                    <field name="selling_price"/>
-                </tree>
             </field>
         </record>
 
