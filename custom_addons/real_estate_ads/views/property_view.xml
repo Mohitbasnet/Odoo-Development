@@ -24,6 +24,7 @@
                     <field name="expected_price"/>
                     <field name="best_offer"/>
                     <field name="selling_price"/>
+                    <field name="state" widget="badge"/>
                 </tree>
             </field>
         </record>
@@ -157,12 +158,12 @@
                         
                     </div> 
                         <group>
-                            <field name="name"/>
+                            <field name="name" widget="char_emojis" placeholder="Property Name" />
                               <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
                             <group>
                                 <field name="type_id"/>
                                 <field name="state"/>
-                                <field name="postcode"/>
+                                <field name="postcode" password="True"/>
                                 <field name="date_availability"/>
                             </group>
                             <group>
@@ -178,10 +179,10 @@
                                     <field name='bedrooms'/>
                                     <field name='living_area'/>
                                     <field name='facades'/>
-                                    <field name='garage'/>
+                                    <field name='garage' widget="boolean_toggle"/>
                                     <field name='garden'/>
                                     <field name="garden_area" attrs="{'invisible': [('garden', '=', False)]}"/>
-                                    <field name="garden_orientaion" attrs="{'invisible': [('garden', '=', False)]}"/>
+                                    <field name="garden_orientaion" attrs="{'invisible': [('garden', '=', False)]}" widget="radio"/>
                                     <field name="total_area"/>
                                 </group>
                             </page>
@@ -202,9 +203,9 @@
                             </page>
                             <page string="Other info">
                               <group>
-                                   <field name="sales_id"/>
+                                   <field name="sales_id" widget="many2one_avatar_user"/>
                                    <field name="buyer_id"/>
-                                   <field name="phone"/>
+                                   <field name="phone" widget="phone"/>
                             
                               </group>
 
@@ -219,7 +220,7 @@
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
-            <field name="view_mode">kanban,tree,pivot,graph,calender,form</field>
+            <field name="view_mode">kanban,tree,pivot,graph,calendar,form</field>
             <field name="view_id" ref="estate_property_tree_view"/>
             <field name="help" type="html">
                 <p class="o_view_nocontent_smiling_face">
