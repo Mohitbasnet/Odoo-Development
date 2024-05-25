@@ -13,7 +13,7 @@
              
                     <field name="validity"/>
                     <field name="creation_date"/>
-                    <field name="deadline"/>
+                    <field name="deadline" widget="ramaining_days"/>
                   
                 </tree>
             </field>
