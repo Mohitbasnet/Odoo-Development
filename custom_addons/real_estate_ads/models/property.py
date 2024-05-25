@@ -16,7 +16,7 @@ class Property(models.Model):
     date_availability = fields.Date(string="Available from")
     expected_price = fields.Float(string="Expected Price")
     selling_price = fields.Float(string="Selling Price")
-    best_offer = fields.Float(string="Best Offer")
+    best_offer = fields.Monetary(string="Best Offer", compute='_compute_best_price')
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area")
     facades = fields.Integer(string="Facades")
@@ -38,6 +38,14 @@ class Property(models.Model):
     
     def action_cancel(self):
         self.state = 'refused'
+
+    @api.depends('offer_ids')
+    def _compute_best_price(self):
+        for rec in self:
+            if rec.offer_ids:
+                rec.best_offer = max(rec.offer_ids.mapped('price'))
+            else:
+                rec.best_offer = 0
 
 
     @api.onchange("living_area","garden_area")

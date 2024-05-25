@@ -29,11 +29,11 @@ class PropertyOffer(models.Model):
 
 
 
-    # @api.model
-    # def _set_create_date(self):
-    #     return fields.Date.today()
-    
-    creation_date = fields.Date(string="Create Date")
+    @api.model
+    def _set_create_date(self):
+        return fields.Date.today()
+
+    creation_date = fields.Date(string="Create Date", default=_set_create_date)
     
     def _inverse_deadline(self):
         for rec in self:
@@ -43,12 +43,7 @@ class PropertyOffer(models.Model):
             else:
                 rec.validity = False
 
-    @api.model_create_multi
-    def create(self, vals):
-        for rec in vals:
-            if not rec.get("creation_date"):
-                rec['creation_date'] = fields.Date.today()
-        return super(PropertyOffer,self).create(vals)
+    
 
 
     @api.depends("validity","creation_date")
@@ -65,7 +60,7 @@ class PropertyOffer(models.Model):
             if rec.deadline and rec.creation_date and rec.deadline <= rec.creation_date:
                 raise ValidationError('Deadline cannot be before creation date')
 
-     def action_accept_offer(self):
+    def action_accept_offer(self):
         if self.property_id:
             self._validate_accepted_offer()
             self.property_id.write({
@@ -74,13 +69,23 @@ class PropertyOffer(models.Model):
             })
         self.status = 'accepted'
 
-    def _validate_accepted_offer(self):
-        offer_ids = self.env['estate.property.offer'].search([
-            ('property_id', '=', self.property_id.id),
-            ('status', '=', 'accepted'),
-        ])
-        if offer_ids:
-            raise ValidationError("You have an accepted offer already")
+        
+
+    # def _validate_accepted_offer(self):
+    #     offer_ids = self.env['estate.property.offer'].search([
+    #         ('property_id', '=', self.property_id.id),
+    #         ('status', '=', 'accepted'),
+    #     ])
+    #     if offer_ids:
+    #         raise ValidationError("You have an accepted offer already")
+        
+    def action_decline_offer(self):
+        self.status = 'refused'
+        if all(self.property_id.offer_ids.mapped('status')):
+            self.property_id.write({
+                'selling_price': 0,
+                'state': 'received'
+            })
 
     
     # _sql_constraints = [
