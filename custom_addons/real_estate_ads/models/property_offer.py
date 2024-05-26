@@ -96,6 +96,14 @@ class PropertyOffer(models.Model):
     # _sql_constraints = [
     #     ('check_validity', 'check(validity > 0)','Deadline cannot be before creation date')
     # ]
+
+    def extend_offer_deadline(self):
+        activ_ids = self._context.get('active_ids', [])
+        if activ_ids:
+            offer_ids = self.env['estate.property.offer'].browse(activ_ids)
+            for offer in offer_ids:
+                offer.validity = 10
+
     
     
       
