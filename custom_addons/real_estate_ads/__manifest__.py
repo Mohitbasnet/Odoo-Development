@@ -11,6 +11,7 @@
     "depends": ['base'],
     "data": [
         "security/ir.model.access.csv",
+        "security/res_groups.xml",
         
         "views/property_type.xml",
         
