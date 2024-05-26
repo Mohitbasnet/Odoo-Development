@@ -155,6 +155,9 @@
                         <button class="oe_stat_button" name="action_property_view_offers" type="object" icon="fa-handshake-o">
                                 <field name="offer_count" string="Offers" widget="statinfo"/>
                             </button>
+                             <!-- <button class="oe_stat_button" name="website_publish_button" type="object" icon="fa-globe">
+                                <field name="is_published" widget="website_publish_button"/>
+                            </button> -->
                         
                     </div> 
                         <group>
@@ -215,6 +218,11 @@
                 </form>
             </field>
         </record>
+        
+       <record id="action_custom_client_action" model="ir.actions.client">
+            <field name="name">Custom Client Action</field>
+            <field name="tag">custom_client_action</field>
+        </record>
 
         <!-- Action -->
         <record id="action_property" model="ir.actions.act_window">
@@ -228,5 +236,6 @@
                 </p>
             </field>
         </record>
+        
     </data>
 </odoo>

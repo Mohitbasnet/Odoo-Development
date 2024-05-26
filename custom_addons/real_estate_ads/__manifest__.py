@@ -20,14 +20,17 @@
         "views/property_view.xml",
         "views/property_offer_view.xml",
          "views/menu_items.xml",
-        
-       
-        
-        
+
         
         # "data/property_type.xml",
         "data/estate.property.type.csv"
     ],
+     'assets': {
+        'web.assets_backend': [
+            'real_estate_ads/static/src/js/my_custom_tag.js',
+            'real_estate_ads/static/src/xml/my_custom_tag.xml',
+        ]
+    },
     "demo": [
         "demo/property_tag.xml"
     ]

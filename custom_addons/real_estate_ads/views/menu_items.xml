@@ -12,6 +12,7 @@
           <menuitem id="menu_property_type" name="Property Types" action="real_estate_ads.action_property_type"/>
           <menuitem id="menu_property_tag" name="Property Tag" action="real_estate_ads.action_property_tag"/>
           <menuitem id="menu_property_offers" name="Offers" action="real_estate_ads.action_property_offers"/>
+          <menuitem id="menu_property_client" name="Test Client Action" action="real_estate_ads.action_custom_client_action"/>
        </menuitem> 
 
 
