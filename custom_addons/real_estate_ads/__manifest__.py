@@ -20,6 +20,8 @@
         "views/property_view.xml",
         "views/property_offer_view.xml",
          "views/menu_items.xml",
+         "report/property_report.xml",
+         "report/report_template.xml",
 
         
         # "data/property_type.xml",
@@ -33,5 +35,7 @@
     },
     "demo": [
         "demo/property_tag.xml"
-    ]
+    ],
+
+
 }
