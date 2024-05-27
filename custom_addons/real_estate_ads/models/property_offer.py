@@ -24,6 +24,7 @@ class PropertyOffer(models.Model):
     
     partner_id = fields.Many2one('res.partner', string="Customer")
     property_id = fields.Many2one('estate.property', string="Property")
+    partner_email = fields.Char(string="Customer Email", related='partner_id.email')
     validity = fields.Integer(string = "Validity")
     deadline = fields.Date(string="Deadline", inverse = "_inverse_deadline", compute="_compute_deadline")
 

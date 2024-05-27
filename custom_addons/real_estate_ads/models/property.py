@@ -2,7 +2,8 @@ from odoo import fields,models,api
 
 class Property(models.Model):
     _name = 'estate.property'
-    _inherit = ['mail.thread','mail.activity.mixin']
+    _inherit = ['mail.thread','mail.activity.mixin','website.published.mixin', 'website.seo.metadata']
+
     _description = "This is the model made by mohit"
 
     name = fields.Char(string="Name")
@@ -78,6 +79,14 @@ class Property(models.Model):
             
 
         }
+    
+    def action_send_email(self):
+        mail_template = self.env.ref('real_estate_ads.offer_mail_template')
+        mail_template.send_mail(self.id, force_send=True)
+        
+    
+    def _get_emails(self):
+        return ','.join(self.offer_ids.mapped('partner_email'))
 
 class PropertyType(models.Model):
     _name = 'estate.property.type'

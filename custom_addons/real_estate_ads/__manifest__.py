@@ -8,7 +8,7 @@
     "category": "Sales",
     "application": True,
     "installable": True,
-    "depends": ['base','mail'],
+    "depends": ['base','mail','website'],
     "data": [
         "security/ir.model.access.csv",
         "security/res_groups.xml",
@@ -25,7 +25,8 @@
 
         
         # "data/property_type.xml",
-        "data/estate.property.type.csv"
+        "data/estate.property.type.csv",
+        "data/mail_template.xml"
     ],
      'assets': {
         'web.assets_backend': [
