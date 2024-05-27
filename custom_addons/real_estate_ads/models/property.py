@@ -47,6 +47,9 @@ class Property(models.Model):
             else:
                 rec.best_offer = 0
 
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        return 'Estate Property - %s' % self.name
 
     @api.onchange("living_area","garden_area")
     def _onchange_total_area(self):
