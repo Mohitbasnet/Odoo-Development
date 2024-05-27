@@ -215,6 +215,11 @@
                             </page>
                         </notebook>
                     </sheet>
+                     <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="activity_ids" widget="mail_activity"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
@@ -247,6 +252,17 @@
                 action = model.extend_offer_deadline()
             </field>
         </record>
+
+        <record id="ir_cron_extend_offer_deadline" model="ir.cron">
+            <field name="name">Offers: Extend Deadline Everyday</field>
+            <field name="model_id" ref="real_estate_ads.model_estate_property_offer"/>
+            <field name="state">code</field>
+            <field name="code">model._extend_offer_deadline()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="numbercall">-1</field>
+        </record>
+
 
 
     </data>
