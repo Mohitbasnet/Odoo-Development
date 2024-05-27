@@ -146,8 +146,9 @@
             <field name="arch" type="xml">
                 <form>
                 <header> 
-                    <button name="action_sold"  type ="object" string="Sold"/>
-                    <button name="action_cancel"  type ="object" string="Cancel"/>
+                    <button name="action_sold"  type ="object" string="Sold" class="btn btn-primary"/>
+                    <button name="action_cancel"  type ="object" string="Cancel" class="btn btn-danger"/>
+                    <button name="action_send_email" type="object" string="Send Email" class="btn btn-danger"/>
                     <field name="state" widget="statusbar"/>
                 </header>
                     <sheet>
@@ -155,9 +156,9 @@
                         <button class="oe_stat_button" name="action_property_view_offers" type="object" icon="fa-handshake-o">
                                 <field name="offer_count" string="Offers" widget="statinfo"/>
                             </button>
-                             <!-- <button class="oe_stat_button" name="website_publish_button" type="object" icon="fa-globe">
+                             <button class="oe_stat_button" name="website_publish_button" type="object" icon="fa-globe">
                                 <field name="is_published" widget="website_publish_button"/>
-                            </button> -->
+                            </button>
                         
                     </div> 
                         <group>
