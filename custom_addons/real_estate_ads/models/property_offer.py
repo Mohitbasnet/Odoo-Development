@@ -106,5 +106,8 @@ class PropertyOffer(models.Model):
 
     
     
-      
+    def _extend_offer_deadline(self):
+        offer_ids = self.env['estate.property.offer'].search([])
+        for offer in offer_ids:
+            offer.validity = offer.validity + 1
     
