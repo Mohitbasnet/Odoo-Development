@@ -2,6 +2,7 @@ from odoo import fields,models,api
 
 class Property(models.Model):
     _name = 'estate.property'
+    _inherit = ['mail.thread','mail.activity.mixin']
     _description = "This is the model made by mohit"
 
     name = fields.Char(string="Name")
@@ -14,7 +15,7 @@ class Property(models.Model):
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(string="Available from")
-    expected_price = fields.Float(string="Expected Price")
+    expected_price = fields.Float(string="Expected Price", tracking=True)
     selling_price = fields.Float(string="Selling Price", readonly = True)
     best_offer = fields.Float(string="Best Offer", compute='_compute_best_price')
     bedrooms = fields.Integer(string="Bedrooms")

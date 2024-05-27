@@ -8,7 +8,7 @@
     "category": "Sales",
     "application": True,
     "installable": True,
-    "depends": ['base'],
+    "depends": ['base','mail'],
     "data": [
         "security/ir.model.access.csv",
         "security/res_groups.xml",
