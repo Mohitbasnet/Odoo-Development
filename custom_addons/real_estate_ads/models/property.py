@@ -9,16 +9,16 @@ class Property(models.Model):
     name = fields.Char(string="Name")
     state = fields.Selection([
         ('new','New'),('received',"Offer Received"),('accepted','Offer Accepted'),('sold','Sold'),('cancel','Cancelled')
-        ],default='new', string="Status")
+        ],default='new', string="Status" , group_expand='_expand_state')
     tag_ids = fields.Many2many('estate.property.tag', string="Property Tag")
     type_id = fields.Many2one('estate.property.type',string="Property Type")
     offer_ids = fields.One2many('estate.property.offer', 'property_id',string="Offers")
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(string="Available from")
-    expected_price = fields.Float(string="Expected Price", tracking=True)
-    selling_price = fields.Float(string="Selling Price", readonly = True)
-    best_offer = fields.Float(string="Best Offer", compute='_compute_best_price')
+    expected_price = fields.Monetary(string="Expected Price", tracking=True)
+    best_offer = fields.Monetary(string="Best Offer", compute='_compute_best_price')
+    selling_price = fields.Monetary(string="Selling Price", readonly=True)
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area")
     facades = fields.Integer(string="Facades")
@@ -32,7 +32,8 @@ class Property(models.Model):
     sales_id = fields.Many2one('res.users',string="Salesman")
     buyer_id = fields.Many2one('res.partner', string="Buyer", domain=[('is_company','=',True)])
     phone = fields.Char(string="Phone", related = "buyer_id.phone")
-    
+    currency_id = fields.Many2one("res.currency", string="Currency",
+                                  default=lambda self: self.env.user.company_id.currency_id)
     
 
     def action_sold(self):
@@ -87,6 +88,11 @@ class Property(models.Model):
     
     def _get_emails(self):
         return ','.join(self.offer_ids.mapped('partner_email'))
+    
+    def _expand_state(self, states, domain, order):
+        return [
+            key for key, dummy in type(self).state.selection
+        ]
 
 class PropertyType(models.Model):
     _name = 'estate.property.type'

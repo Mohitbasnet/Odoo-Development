@@ -29,16 +29,12 @@
                     <sheet>
                     <group>
                         <group>
-
-                            <field name="price"/>
-                            <field name="status"/>
-                            <field name="partner_id"/>
-                            <field name="property_id"/>
-                            
-                            
-                  
-                            
-                        </group>
+                                <field name="price" widget="monetary"/>
+                                <field name="status"/>
+                                <field name="partner_id"/>
+                                <field name="property_id"/>
+                                <field name="currency_id" invisible="1"/>
+                            </group>
                         <group>
                             <field name="creation_date"/>
                             <field name="validity"/>
