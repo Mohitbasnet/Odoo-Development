@@ -19,12 +19,13 @@
             <field name="arch" type="xml">
                 <tree>
                     <field name="name"/>
+                    <field name="type_id"/>
                     <field name="postcode"/>
                     <field name="date_availability"/>
-                    <field name="expected_price"/>
-                    <field name="best_offer"/>
-                    <field name="selling_price"/>
-                    <field name="state" widget="badge"/>
+                    <field name="expected_price" widget="monetary"/>
+                    <field name="best_offer" widget="monetary"/>
+                    <field name="selling_price" widget="monetary"/>
+                    <field name="currency_id" invisible="1"/>
                 </tree>
             </field>
         </record>
@@ -170,10 +171,11 @@
                                 <field name="postcode" password="True"/>
                                 <field name="date_availability"/>
                             </group>
-                            <group>
-                                <field name="expected_price"/>
-                                <field name="best_offer"/>
-                                <field name="selling_price"/>
+                             <group>
+                                <field name="expected_price" groups="real_estate_ads.group_property_manager" widget="monetary"/>
+                                <field name="best_offer" widget="monetary"/>
+                                <field name="selling_price" widget="monetary"/>
+                                <field name="currency_id" invisible="1"/>
                             </group>
                         </group>
                         <notebook>
@@ -193,8 +195,8 @@
                             <page string="Offers">
                                 <field name="offer_ids">
                                      <tree editable="bottom" decoration-success="status == 'accepted'" decoration-danger="status == 'refused'">
-                                        <field name="price"/>
-                                        
+                                        <field name="price" widget="monetary"/>
+                                         <field name="currency_id" invisible="1"/>
                                         <field name="partner_id"/>
                                         <field name="validity"/>
                                         <field name="deadline"/>
