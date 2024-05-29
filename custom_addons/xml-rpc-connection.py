@@ -4,11 +4,11 @@ url = 'http://localhost:8069/'
 username = 'mohit'
 password = 'mohit'
 db ='mohit'
-import models
+
 common = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/common')
-print(common.version())
 user_uid = common.authenticate(db, username, password, {})
-print(user_uid)
+
+models = xmlrpc.client.ServerProxy(f'{url}/xmlrpc/2/object')
 
 # search function
 property_ids = models.execute_kw(db, user_uid, password, 'estate.property', 'search', [[]])
